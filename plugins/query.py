@@ -247,7 +247,12 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 logger.exception(e)
             f_caption = f_caption
         if f_caption is None:
-            f_caption = f"{files.file_name}"    
+            f_caption = f"{files.file_name}" 
+            buttons = [
+                    [
+                        InlineKeyboardButton('♻️ Group ♻️', url='t.me/ss07moviehut')
+                    ]
+                ]
         try:                  
             if AUTH_CHANNEL and not await is_subscribed(client, query):
                 return await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
@@ -325,6 +330,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 f_caption = f_caption
         if f_caption is None:
             f_caption = f"{title}"
+            buttons = [
+                    [
+                        InlineKeyboardButton('♻️ Group ♻️', url='t.me/ss07moviehut')
+                    ]
+                ]
         await query.answer()
         await client.send_cached_media(
             chat_id=query.from_user.id,
@@ -620,8 +630,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )
     elif query.data == "source":
         buttons = [[
-            InlineKeyboardButton('SOURCE CODE', url='https://github.com/MrMKN/PROFESSOR-BOT')
-            ],[
             InlineKeyboardButton('👩‍🦯 Back', callback_data='about')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
