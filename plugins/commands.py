@@ -140,6 +140,11 @@ async def start(client, message):
                     f_caption=f_caption
             if f_caption is None:
                 f_caption = f"{title}"
+                buttons = [
+                    [
+                        InlineKeyboardButton('♻️ Group ♻️', url='t.me/ss07moviehut')
+                    ]
+                ]
             try:
                 await client.send_cached_media(
                     chat_id=message.from_user.id,
@@ -244,6 +249,11 @@ async def start(client, message):
             f_caption=f_caption
     if f_caption is None:
         f_caption = f"{files.file_name}"
+        buttons = [
+                    [
+                        InlineKeyboardButton('♻️ Group ♻️', url='t.me/ss07moviehut')
+                    ]
+                ]
     await client.send_cached_media(
         chat_id=message.from_user.id,
         file_id=file_id,
