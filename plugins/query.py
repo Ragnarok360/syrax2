@@ -261,6 +261,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     chat_id=query.from_user.id,
                     file_id=file_id,
                     caption=f_caption,
+                    buttons = [
+                    [
+                        InlineKeyboardButton('♻️ Group ♻️', url='t.me/ss07moviehut')
+                    ]
+                ]
                     protect_content=True if ident == "pmfilep" else False                    
                 )                       
         except Exception as e:
@@ -286,7 +291,12 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 logger.exception(e)
             f_caption = f_caption
         if f_caption is None:
-            f_caption = f"{files.file_name}"        
+            f_caption = f"{files.file_name}"  
+            buttons = [
+                    [
+                        InlineKeyboardButton('♻️ Group ♻️', url='t.me/ss07moviehut')
+                    ]
+                ]
         try:
             if AUTH_CHANNEL and not await is_subscribed(client, query):
                 await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
